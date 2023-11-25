@@ -22,7 +22,6 @@ export default defineConfig({
 	test: {
 		globals: true,
 		root: path.join(process.cwd(), 'test'),
-		environment: 'jsdom',
 		setupFiles: [path.join(process.cwd(), 'test', 'setup.ts')]
 	}
 });
