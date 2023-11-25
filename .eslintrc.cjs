@@ -12,7 +12,8 @@ module.exports = {
 		'plugin:react/recommended',
 		'plugin:react-hooks/recommended',
 		'plugin:jsx-a11y/recommended',
-		'plugin:react/jsx-runtime'
+		'plugin:react/jsx-runtime',
+		'plugin:vitest/recommended'
 	],
 	parserOptions: {
 		ecmaVersion: 2022,
