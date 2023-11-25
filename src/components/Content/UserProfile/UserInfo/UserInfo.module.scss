@@ -1,0 +1,25 @@
+.user-info-title {
+  text-align: center;
+}
+
+.user-info-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    p {
+      margin: 0.5rem;
+    }
+
+    p:nth-child(2) {
+      text-align: right;
+    }
+  }
+}

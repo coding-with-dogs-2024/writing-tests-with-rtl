@@ -1,0 +1,4 @@
+{
+  "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}": "cross-env ESLINT_FAST=true eslint --fix --max-warnings=0",
+  "*.{css,scss}": "stylelint --fix --max-warnings=0"
+}

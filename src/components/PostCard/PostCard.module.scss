@@ -1,0 +1,30 @@
+@import "../../assets/styles/common";
+
+.post-title {
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .post-title-content {
+    width: 60%;
+  }
+
+  .post-title-user {
+    width: 40%;
+    text-align: right;
+
+    a {
+      @include link-bg-default;
+    }
+  }
+}
+
+.post-body {
+  display: flex;
+  flex-direction: column;
+
+  .comment-button-wrapper {
+    margin: 1rem 0;
+  }
+}

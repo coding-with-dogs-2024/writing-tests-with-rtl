@@ -1,0 +1,19 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/common";
+
+.navbar {
+  background-color: $color-primary;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  @include box-shadow;
+
+  a {
+    @include link-bg-primary;
+  }
+
+  .title {
+    margin: 0;
+  }
+}

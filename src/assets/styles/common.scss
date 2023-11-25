@@ -1,0 +1,58 @@
+@import "./variables";
+
+@mixin box-shadow {
+  box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
+}
+
+@mixin border-radius {
+  border-radius: 0.25rem;
+}
+
+@mixin link {
+  text-decoration: none;
+  cursor: pointer;
+
+  @include border-radius;
+
+  @media (width >= 890px) {
+    padding: 0.5rem;
+  }
+
+  @media (width <= 889px) {
+    padding: 0.1rem;
+  }
+  
+  &:hover {
+    border-style: solid;
+    border-width: 0.1rem;
+
+    @media (width >= 890px) {
+      padding: 0.4rem;
+    }
+
+    @media (width <= 889px) {
+      padding: 0;
+    }
+  }
+}
+
+@mixin link-bg-primary {
+  @include link;
+
+  background-color: $color-primary;
+  color: $text-when-bg-color-primary;
+}
+
+@mixin link-bg-secondary {
+  @include link;
+
+  background-color: $color-secondary;
+  color: black;
+}
+
+@mixin link-bg-default {
+  @include link;
+
+  background-color: white;
+  color: black;
+}

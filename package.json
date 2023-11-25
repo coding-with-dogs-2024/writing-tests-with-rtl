@@ -1,0 +1,53 @@
+{
+  "name": "@codingwithdogs/base-social-app",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "typeCheck": "typed-scss-modules src && tsc --noEmit",
+    "lint": "eslint --fix --max-warnings=0 'src/**/*.{ts,tsx,js,jsx}' && stylelint --fix --max-warnings=0 'src/**/*.{css,scss}'",
+    "prepare": "husky install",
+    "validate": "npm run typeCheck && npm run lint",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.8.4",
+    "@types/node": "^20.9.2",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "postcss": "^8.4.31",
+    "prettier": "^3.1.0",
+    "sass": "^1.69.5",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "typed-scss-modules": "^7.1.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.8.4",
+    "axios": "^1.6.2",
+    "classnames": "^2.3.2",
+    "immer": "^10.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.19.0",
+    "react-router-dom": "^6.19.0",
+    "use-immer": "^0.9.0",
+    "zod": "^3.22.4"
+  }
+}
