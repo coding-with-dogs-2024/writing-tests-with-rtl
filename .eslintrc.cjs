@@ -13,7 +13,10 @@ module.exports = {
 		'plugin:react-hooks/recommended',
 		'plugin:jsx-a11y/recommended',
 		'plugin:react/jsx-runtime',
-		'plugin:vitest/recommended'
+		'plugin:vitest/recommended',
+		'plugin:testing-library/dom',
+		'plugin:jest-dom/recommended',
+		'plugin:testing-library/react'
 	],
 	parserOptions: {
 		ecmaVersion: 2022,
