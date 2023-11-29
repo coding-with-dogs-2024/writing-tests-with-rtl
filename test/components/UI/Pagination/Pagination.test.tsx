@@ -22,6 +22,18 @@ beforeEach(() => {
 	vi.clearAllMocks();
 });
 
+test.each<[ReadonlyArray<ButtonToShow>]>([
+	[[]],
+	[['previous']],
+	[['next']],
+	[['previous', 'next']]
+])('Pagination buttons %s', (buttonsToShow: ReadonlyArray<ButtonToShow>) => {
+	doRender(...buttonsToShow);
+
+	const buttons = screen.getAllByRole('button');
+	expect(buttons).toHaveLength(buttonsToShow.length);
+});
+
 test('Pagination with the Previous button', async () => {
 	doRender('previous');
 	const buttons = screen.getAllByRole('button');
