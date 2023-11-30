@@ -27,12 +27,42 @@ test.each<[ReadonlyArray<ButtonToShow>]>([
 	[['previous']],
 	[['next']],
 	[['previous', 'next']]
-])('Pagination buttons %s', (buttonsToShow: ReadonlyArray<ButtonToShow>) => {
-	doRender(...buttonsToShow);
+])(
+	'Pagination buttons %s',
+	async (buttonsToShow: ReadonlyArray<ButtonToShow>) => {
+		doRender(...buttonsToShow);
 
-	const buttons = screen.getAllByRole('button');
-	expect(buttons).toHaveLength(buttonsToShow.length);
-});
+		const buttons = screen.queryAllByRole('button');
+		expect(buttons).toHaveLength(buttonsToShow.length);
+
+		const previousButton = screen.queryByRole('button', {
+			name: 'Previous'
+		});
+		const nextButton = screen.queryByRole('button', {
+			name: 'Next'
+		});
+
+		if (buttonsToShow.includes('previous')) {
+			expect(previousButton).toBeVisible();
+			if (!previousButton)
+				throw new Error('Previous button should not be nullable');
+			await userEvent.click(previousButton);
+			expect(previousPage).toHaveBeenCalledOnce();
+		} else {
+			expect(previousButton).not.toBeInTheDocument();
+		}
+
+		if (buttonsToShow.includes('next')) {
+			expect(nextButton).toBeVisible();
+			if (!nextButton)
+				throw new Error('Next button should not be nullable');
+			await userEvent.click(nextButton);
+			expect(nextPage).toHaveBeenCalledOnce();
+		} else {
+			expect(nextButton).not.toBeInTheDocument();
+		}
+	}
+);
 
 test('Pagination with the Previous button', async () => {
 	doRender('previous');
