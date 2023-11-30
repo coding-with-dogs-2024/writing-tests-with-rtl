@@ -5,7 +5,7 @@
   "scripts": {
     "start": "vite",
     "typeCheck": "typed-scss-modules src && tsc --noEmit --project ./test/tsconfig.json",
-    "lint": "eslint --fix --max-warnings=0 'src/**/*.{ts,tsx,js,jsx}' && stylelint --fix --max-warnings=0 'src/**/*.{css,scss}'",
+    "lint": "eslint --fix --max-warnings=0 '{src,test}/**/*.{ts,tsx,js,jsx}' && stylelint --fix --max-warnings=0 '{src,test}/**/*.{css,scss}'",
     "prepare": "husky install",
     "test": "vitest run",
     "validate": "npm run typeCheck && npm run lint && npm run test",
