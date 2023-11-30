@@ -22,6 +22,9 @@ beforeEach(() => {
 	vi.clearAllMocks();
 });
 
+/*
+ * One test, using parameters to perform all permutations
+ */
 test.each<[ReadonlyArray<ButtonToShow>]>([
 	[[]],
 	[['previous']],
@@ -63,6 +66,10 @@ test.each<[ReadonlyArray<ButtonToShow>]>([
 		}
 	}
 );
+
+/*
+ * Two simpler tests for different permutations
+ */
 
 test('Pagination with the Previous button', async () => {
 	doRender('previous');
