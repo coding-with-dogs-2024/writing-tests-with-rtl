@@ -4,8 +4,10 @@ import { Radio } from '../../UI/Form/Radio';
 import { Checkbox } from '../../UI/Form/Checkbox';
 import { useImmer } from 'use-immer';
 import type { ChangeEvent } from 'react';
+import { useState } from 'react';
 import type { FormOption } from '../../UI/Form/types';
 import { Select } from '../../UI/Form/Select';
+import { Button } from '../../UI/Button';
 
 type Gender = 'male' | 'female' | 'other';
 type UserType = 'standard' | 'admin';
@@ -21,7 +23,7 @@ const USER_TYPE_OPTIONS: ReadonlyArray<FormOption<UserType>> = [
 	{ value: 'admin', label: 'Admin' }
 ];
 
-type State = Readonly<{
+type FormState = Readonly<{
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -34,13 +36,13 @@ type State = Readonly<{
 }>;
 
 type UseRegistrationFormReturn = Readonly<{
-	state: State;
+	state: FormState;
 	onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 	onSelectChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }>;
 
 const useRegistrationForm = (): UseRegistrationFormReturn => {
-	const [state, setState] = useImmer<State>({
+	const [state, setState] = useImmer<FormState>({
 		firstName: '',
 		lastName: '',
 		dailyPostLimit: 0,
@@ -52,7 +54,11 @@ const useRegistrationForm = (): UseRegistrationFormReturn => {
 		userType: 'standard'
 	});
 
-	const onChange = (name: keyof State, value: string, checked: boolean) => {
+	const onChange = (
+		name: keyof FormState,
+		value: string,
+		checked: boolean
+	) => {
 		setState((draft) => {
 			switch (name) {
 				case 'dailyPostLimit':
@@ -75,14 +81,14 @@ const useRegistrationForm = (): UseRegistrationFormReturn => {
 	};
 
 	const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-		const name = event.target.name as keyof State;
+		const name = event.target.name as keyof FormState;
 		const value = event.target.value;
 		const checked = event.target.checked;
 		onChange(name, value, checked);
 	};
 
 	const onSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-		const name = event.target.name as keyof State;
+		const name = event.target.name as keyof FormState;
 		const value = event.target.value;
 		onChange(name, value, false);
 	};
@@ -94,8 +100,24 @@ const useRegistrationForm = (): UseRegistrationFormReturn => {
 	};
 };
 
+type FormSubmissionReturn = Readonly<{
+	submission: string;
+	doSubmit: () => void;
+}>;
+
+const useFormSubmission = (currentState: FormState): FormSubmissionReturn => {
+	const [submission, setSubmission] = useState<string>('');
+
+	const doSubmit = () => setSubmission(JSON.stringify(currentState));
+	return {
+		submission,
+		doSubmit
+	};
+};
+
 export const Registration = () => {
 	const { state, onInputChange, onSelectChange } = useRegistrationForm();
+	const { submission, doSubmit } = useFormSubmission(state);
 	return (
 		<div className={classes.registration}>
 			<h1>Registration</h1>
@@ -179,6 +201,15 @@ export const Registration = () => {
 						onChange={onSelectChange}
 					/>
 				</div>
+			</section>
+			<section>
+				<Button color="primary" onClick={doSubmit}>
+					Submit
+				</Button>
+			</section>
+			<section>
+				<h2>Submission</h2>
+				<p>{submission}</p>
 			</section>
 		</div>
 	);
