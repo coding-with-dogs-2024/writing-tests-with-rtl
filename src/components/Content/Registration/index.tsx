@@ -29,6 +29,7 @@ type FormState = Readonly<{
 	email: string;
 	password: string;
 	dateOfBirth: string;
+	photo: string;
 	gender: Gender;
 	notifications: boolean;
 	dailyPostLimit: number;
@@ -51,7 +52,8 @@ const useRegistrationForm = (): UseRegistrationFormReturn => {
 		gender: 'male',
 		notifications: true,
 		password: '',
-		userType: 'standard'
+		userType: 'standard',
+		photo: ''
 	});
 
 	const onChange = (
@@ -172,6 +174,15 @@ export const Registration = () => {
 						options={GENDER_OPTIONS}
 						selected={state.gender}
 						onChange={onInputChange}
+					/>
+				</div>
+				<div className={classes.row}>
+					<Input
+						type="file"
+						labelText="Photo"
+						name="photo"
+						onChange={onInputChange}
+						value={state.photo}
 					/>
 				</div>
 			</section>

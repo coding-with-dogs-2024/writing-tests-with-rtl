@@ -5,7 +5,7 @@ import type { ChangeEvent } from 'react';
 type Props = Readonly<{
 	labelText?: string;
 	name: string;
-	type?: 'text' | 'date' | 'password' | 'number';
+	type?: 'text' | 'date' | 'password' | 'number' | 'file';
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 	value: string | number;
 }>;
