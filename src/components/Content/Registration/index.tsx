@@ -203,7 +203,7 @@ export const Registration = () => {
 				</div>
 			</section>
 			<section>
-				<Button color="primary" onClick={doSubmit}>
+				<Button color="secondary" onClick={doSubmit}>
 					Submit
 				</Button>
 			</section>
