@@ -120,6 +120,7 @@ const useFormSubmission = (currentState: FormState): FormSubmissionReturn => {
 export const Registration = () => {
 	const { state, onInputChange, onSelectChange } = useRegistrationForm();
 	const { submission, doSubmit } = useFormSubmission(state);
+	const [hover, setHover] = useState<boolean>(false);
 	return (
 		<div className={classes.registration}>
 			<h1>Registration</h1>
@@ -221,6 +222,19 @@ export const Registration = () => {
 			<section>
 				<h2>Submission</h2>
 				<p>{submission}</p>
+			</section>
+			<section>
+				<h2
+					onFocus={() => setHover(true)}
+					onBlur={() => setHover(false)}
+					onMouseOver={() => setHover(true)}
+					onMouseLeave={() => setHover(false)}
+				>
+					Hover Output
+				</h2>
+				<p style={{ visibility: hover ? 'visible' : 'hidden' }}>
+					Is Hovering
+				</p>
 			</section>
 		</div>
 	);
