@@ -46,4 +46,6 @@ test('Hello World renders', async () => {
 
 	const element = await screen.findByText('Hello World');
 	expect(element).toBeVisible();
+
+	expect(screen.getByPlaceholderText(/THE text/i)).toBeVisible();
 });
